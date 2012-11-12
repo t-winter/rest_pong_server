@@ -39,13 +39,13 @@ Returned array:
 
 ### GET game/:key/status
 Returned array:
-* players[(string) 'left', (string) 'right'] (Nicknames of both players)
+* players{(string) 'left', (string) 'right'} (Nicknames of both players)
 * (int) leftMoveCounter (left players moves this second)
 * (int) rightPlayersCounter
 * (int) scoreLeft (left players score)
 * (int) scoreRight
-* ball[(int) 0, (int) 1] (x(=0) and y(=1)-position of the ball)
-* ballDelta[(int) 0, (int) 1] ((x(=0) and y(=1)-distance per second)
+* ball{(int) 0, (int) 1} (x(=0) and y(=1)-position of the ball)
+* ballDelta{(int) 0, (int) 1} ((x(=0) and y(=1)-distance per second)
 * (int) paddleLeft (top position of left paddle)
 * (int) paddleRight
 * (string) status (status of the game, possible values: 'login', 'ready', 'started');
