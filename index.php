@@ -26,7 +26,7 @@ default: return_http_code(404);
 } catch (Exception $e) {return_http_code(404);}
 
 function basicGameConfig() {
-$_SESSION['basicConfig']=['FIELD_WIDTH'=>500, 'FIELD_HEIGHT'=>400, 'BALL_RADIUS'=>5, 'PADDLE_HEIGHT'=>50, 'PADDLE_WIDTH'=>10, 'PADDLE_STEP'=>5, 'NUMBER_OF_PADDLE_MOVES'=>10, 'ACCELERATOR'=>10, 'INITIAL_BALL_SPEED'=>10, 'WAIT_BEFORE_START'=>5, 'SCORE_TO_WIN'=>10];
+$_SESSION['basicConfig']=['FIELD_WIDTH'=>500, 'FIELD_HEIGHT'=>400, 'BALL_RADIUS'=>5, 'PADDLE_HEIGHT'=>50, 'PADDLE_WIDTH'=>10, 'PADDLE_STEP'=>25, 'NUMBER_OF_PADDLE_MOVES'=>10, 'ACCELERATOR'=>10, 'INITIAL_BALL_SPEED'=>10, 'WAIT_BEFORE_START'=>5, 'SCORE_TO_WIN'=>10];
 }
 
 function get_status($key) {
