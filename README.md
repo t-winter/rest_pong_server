@@ -3,7 +3,7 @@ REST_Pong_server
 
 The REST_Pong_server is (as the name suggests) a REST-based implementation of a Pong-server written in PHP as a submission to the 4th CodingContest (http://www.coding-contest.de).
 
-Reqirements
+Requirements
 -----------
 PHP>=5.4
 mod_rewrite enabled
