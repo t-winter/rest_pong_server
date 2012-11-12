@@ -5,7 +5,7 @@
 */
 
 if (!session_start()) {exit('unable to start/resume session!');}
-$defaultGame=['players'=>['left'=>'', 'right'=>''], 'secretLeft'=>'', 'secretRight'=>'', 'leftMoveCounter'=>0, 'rightMoveCounter'=>0, 'scoreLeft'=>0, 'scoreRight'=>0, 'ball'=>[0=>250.0, 1=>200.0], 'ballDelta'=>[0=>5.0, 1=>0.0], 'paddleLeft'=>0, 'paddleRight'=>0, 'status'=>'login', 'time'=>0]; //ball[0]=x-pos, ball[1]=y-pos, ballDelta[0]=x-delta per step, ballDelta[1]=y-delta per step
+$defaultGame=['players'=>['left'=>'', 'right'=>''], 'secretLeft'=>'', 'secretRight'=>'', 'leftMoveCounter'=>0, 'rightMoveCounter'=>0, 'scoreLeft'=>0, 'scoreRight'=>0, 'ball'=>[0=>250.0, 1=>200.0], 'ballDelta'=>[0=>5.0, 1=>0.0], 'paddleLeft'=>0, 'paddleRight'=>0, 'status'=>'login', 'time'=>0, 'lastUpdate'=>0]; //ball[0]=x-pos, ball[1]=y-pos, ballDelta[0]=x-delta per step, ballDelta[1]=y-delta per step
 $uri = explode('/', $_SERVER['REQUEST_URI']);
 $method = $_SERVER['REQUEST_METHOD'];
 $uri_base_index=1; //index of 'game' in $uri
@@ -32,7 +32,7 @@ $_SESSION['basicConfig']=['FIELD_WIDTH'=>500, 'FIELD_HEIGHT'=>400, 'BALL_RADIUS'
 function get_status($key) {
 if (!array_key_exists($key, $_SESSION)) {return_http_code(404);}
 $tmp=$_SESSION[$key];
-unset($tmp['secretLeft'], $tmp['secretRight'], $tmp['leftMoveCounter'], $tmp['rightMoveCounter'], $tmp['time']);
+unset($tmp['secretLeft'], $tmp['secretRight'], $tmp['leftMoveCounter'], $tmp['rightMoveCounter'], $tmp['time'], $tmp['lastUpdate']);
 if ($tmp['status']=='started') {recalculateBallPosition($key);}
 echo json_encode($tmp);
 }
@@ -109,12 +109,12 @@ if (!array_key_exists($key, $_SESSION)) {
 function startGame($key) {
 $_SESSION[$key]['ball']=[$_SESSION['basicConfig'][FIELD_WIDTH]/2, $_SESSION['basicConfig'][FIELD_HEIGHT]/2];
 $_SESSION[$key]['ballDelta']=[(-1*rand(0,1))*$_SESSION['basicConfig']['INITIAL_BALL_SPEED'], rand(-$_SESSION['basicConfig']['INITIAL_BALL_SPEED']*100,$_SESSION['basicConfig']['INITIAL_BALL_SPEED']*100)/100.0];
-$_SESSION[$key]['time']=microtime(true);
+$_SESSION[$key]['lastUpdate']=microtime(true);
 }
 
 function recalculateBallPosition($key) {
 $newTime=microtime(true);
-$timeDelta=$newTime-$_SESSION[$key]['time'];
+$timeDelta=$newTime-$_SESSION[$key]['lastUpdate'];
 $_SESSION[$key]['ball'][0]=$_SESSION[$key]['ballDelta'][0]*$timeDelta;
 $_SESSION[$key]['ball'][1]=$_SESSION[$key]['ballDelta'][1]*$timeDelta;
 if ($_SESSION[$key]['ballDelta'][1]<0||$_SESSION[$key]['ballDelta'][1]>$_SESSION['basicConfig']['FIELD_HEIGHT']) $_SESSION[$key]['ballDelta'][1]*=-1;
