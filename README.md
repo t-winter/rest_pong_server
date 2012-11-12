@@ -24,14 +24,14 @@ All single-status (e.g. 'ok', error codes) arer returned in HTTP-statuscodes and
 
 ### GET game/:key/config
 Returned array:
-*(int) FIELD_WIDTH
-*(int) FIELD_HEIGHT
-*(int) BALL_RADIUS
-*(int) PADDLE_HEIGHT (top border, counting from the top)
-*(int) PADDLE_WIDTH (witdh of the paddles. NOTE: the paddels are completely inside the field)
-*(int) PADDLE_STEP (distance covered in a single paddle move)
-*(int) NUMBER_OF_PADDLE_MOVES (number of allowed steps per second)
-*(int) ACCELERATOR (horizontal acceleration of the ball per hit by a paddle)
-*(int) INITIAL_BALL_SPEED (initial horizontal speed in pixels per second)
-*(int) WAIT_BEFORE_START (delay of the start of the game in seconds after login of both players)
-*(int) SCORE_TO_WIN
+* (int) FIELD_WIDTH
+* (int) FIELD_HEIGHT
+* (int) BALL_RADIUS
+* (int) PADDLE_HEIGHT (top border, counting from the top)
+* (int) PADDLE_WIDTH (witdh of the paddles. NOTE: the paddels are completely inside the field)
+* (int) PADDLE_STEP (distance covered in a single paddle move)
+* (int) NUMBER_OF_PADDLE_MOVES (number of allowed steps per second)
+* (int) ACCELERATOR (horizontal acceleration of the ball per hit by a paddle)
+* (int) INITIAL_BALL_SPEED (initial horizontal speed in pixels per second)
+* (int) WAIT_BEFORE_START (delay of the start of the game in seconds after login of both players)
+* (int) SCORE_TO_WIN
